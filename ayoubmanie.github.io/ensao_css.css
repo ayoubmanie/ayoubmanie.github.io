@@ -1,0 +1,158 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+}
+li{
+    list-style: none;
+}
+.grid_nav{
+    display: grid;
+    grid-template-columns: repeat(8,auto);
+    grid-column-gap:0px;
+    grid-row-gap: 0px;
+/*    background-color: #d1d8e0;*/
+}
+.grid_nav li{
+/*
+    
+    align-self: center;
+*/
+    justify-self:start; /*justify is for left and wright*/
+    background-color: white;
+    color:#30b2f3;
+    border:#30b2f3 solid;
+    border-width:1px;
+    border-radius:25px; 
+    padding: 5px 10px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    margin-left:auto;
+    margin-right: auto;
+    height: 20px;
+    width: auto;
+    transition: 0.8s color ,0.6s background ease-in-out,0.6s box-shadow,0.6s border_color ease-in-out;
+
+}
+.grid_nav li ul {
+    list-style:none;
+}
+.grid_nav li ul li{ 
+    border:none;
+    width:80px;
+    height:120px;
+    background: none;
+    margin-left:-21px;
+    margin-top:-125px;
+    position: relative;
+    z-index: -2;
+    opacity: 0;
+    transition:0.8s opacity ,0.8s margin-top cubic-bezier(.96, .01, .01, .99);
+    
+}
+.grid_nav li:hover ul li{ 
+    border:none;
+    width:80px;
+    height:120px;
+    background: none;
+    margin-left:-21px;
+    margin-top:-15px;
+    position: relative;
+    z-index: -2;
+    opacity: 1;
+}
+.grid_nav li:hover{
+    background-color: #f7b731;
+    border-color: #a5b1c2;
+    color:white;
+/*    box-shadow: 0px 0px 4px #45aaf2;*/
+    box-shadow: 3px 5px 0px #d1d8e0;
+   
+}
+#ENSA{
+    font-weight: 800;
+}
+#oujda{
+    font-family: 'Reem Kufi', sans-serif;
+}
+#ENSA,#oujda{
+    font-weight: 800;
+    color:#fa3e49;
+    transition: 0.6s color ease;
+}
+.grid_nav li:hover #oujda,.grid_nav li:hover #ENSA{
+    color: white;
+}
+#ENSA_de_oujda{
+    justify-self:start; /*justify is for left and wright*/
+    background-color: white;
+    color:#30b2f3;
+    border:#21B6A8 solid;
+    border-width:1px;
+    border-radius:25px; 
+    padding: 5px 10px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    margin-left:auto;
+    margin-right: auto;
+    height: 20px;
+    width: auto;
+    transition: 0.4s color ease-in-out,0.6s background cubic-bezier(.6, .03, .06, .96),0.6s border-radius ;
+}
+#ENSA_de_oujda:hover{
+    background-color: #fa3e49;
+    border-color: #fa3e49;
+    border-radius: 0px 10px 0px 0px;
+    color:white;
+    box-shadow: 0px 0px 0px #d1d8e0;
+   
+}
+#blank{
+    content='';
+    background-color: white;
+    width:122px;
+    height: 100px;
+    position: absolute;
+    margin-top:-108px;
+    margin-left:-11px;
+    z-index: -1;
+}
+
+.grid_nav li ul li #image{
+    height:121px;
+    border-radius: 0px;
+    transition: 0.8s border-radius cubic-bezier(0, .63, .63, .89);
+
+}
+.grid_nav li:hover #image{
+    border-radius: 0px 0px 20px 20px;
+}
+#vie_etudiantine{
+    min-width: 108px;
+}
+/*
+#last_nav{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+*/
+#globe{
+/*    border:none;*/
+    border-radius: 32% 68% 53% 47% / 30% 37% 63% 70% ; 
+}
+#grid_eo{
+    float:left;
+    width: auto;
+    height:100px;
+}
+#eo{
+    width: 120px;
+    height: 120px;
+}
+.grid_nav li{content="";
+}
+#ENSA_de_oujda{
+    box-shadow: 0px -3px #41fbea;
+    
+}
