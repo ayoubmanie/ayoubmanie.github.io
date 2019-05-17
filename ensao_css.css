@@ -7,6 +7,20 @@
 li{
     list-style: none;
 }
+button{
+	background: none;
+	color: inherit;
+	border: none;
+	padding: auto;
+    margin: auto;
+	outline: inherit;
+	cursor:pointer;
+}
+/*
+#gradient_barre{
+    background: linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1));
+}
+*/
 .grid_nav{
     display: grid;
     grid-template-columns: repeat(8,auto);
@@ -14,7 +28,7 @@ li{
     grid-row-gap: 0px;
 /*    background-color: #d1d8e0;*/
 }
-.grid_nav li{
+.grid_nav button li{
 /*
     
     align-self: center;
@@ -35,10 +49,10 @@ li{
     transition: 0.8s color ,0.6s background ease-in-out,0.6s box-shadow,0.6s border_color ease-in-out;
 
 }
-.grid_nav li ul {
+.grid_nav button li ul {
     list-style:none;
 }
-.grid_nav li ul li{ 
+.grid_nav button li ul li{ 
     border:none;
     width:80px;
     height:120px;
@@ -51,7 +65,7 @@ li{
     transition:0.8s opacity ,0.8s margin-top cubic-bezier(.96, .01, .01, .99);
     
 }
-.grid_nav li:hover ul li{ 
+.grid_nav button li:hover ul li{ 
     border:none;
     width:80px;
     height:120px;
@@ -62,7 +76,7 @@ li{
     z-index: -2;
     opacity: 1;
 }
-.grid_nav li:hover{
+.grid_nav button li:hover{
     background-color: #f7b731;
     border-color: #a5b1c2;
     color:white;
@@ -81,7 +95,7 @@ li{
     color:#fa3e49;
     transition: 0.6s color ease;
 }
-.grid_nav li:hover #oujda,.grid_nav li:hover #ENSA{
+.grid_nav button li:hover #oujda,.grid_nav li:hover #ENSA{
     color: white;
 }
 #ENSA_de_oujda{
@@ -119,13 +133,13 @@ li{
     z-index: -1;
 }
 
-.grid_nav li ul li #image{
+.grid_nav button li ul li #image{
     height:121px;
     border-radius: 0px;
     transition: 0.8s border-radius cubic-bezier(0, .63, .63, .89);
 
 }
-.grid_nav li:hover #image{
+.grid_nav button li:hover #image{
     border-radius: 0px 0px 20px 20px;
 }
 #vie_etudiantine{
@@ -150,7 +164,7 @@ li{
     width: 120px;
     height: 120px;
 }
-.grid_nav li{content="";
+.grid_nav button li{content="";
 }
 #ENSA_de_oujda{
     box-shadow: 0px -3px #41fbea;
