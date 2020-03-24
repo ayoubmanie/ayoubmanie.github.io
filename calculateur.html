@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        
+        <link rel="stylesheet" type="text/css" href="calculateur.css">
+        
+    </head>
+    
+    <body>
+        <div id="container">
+            <div id="form">
+<span id ="calculateur">Calculateur</span>
+
+<div id="age" class="age_taille">
+    <span>Age</span>
+    <div class="composants">
+        <div id="ans">
+            <input type="number">
+            <span>ans</span>
+        </div>
+        <div id="mois"  class="left-items">
+            <input type="number">
+            <span>mois</span>
+        </div>
+    </div>
+</div>
+                
+<div id="taille" class="age_taille">
+    <span>Taille</span>
+    <div class="composants">
+        <div id="m" >
+            <input type="number">
+            <span>m</span>
+        </div>
+        <div id="cm" class="left-items">
+            <input type="number">
+            <span>cm</span>
+        </div>
+    </div>
+</div>
+                
+<div id="poids" class="age_taille">
+    <span>Poids</span>
+    <div class="composants">
+        <div id="kg" >
+            <input type="number">
+            <span>kg</span>
+        </div>
+    </div>
+</div>
+
+<div id='gender'>
+    <div id='male'>
+        <input id="option-one" name="radio" value="one" checked="checked" type="radio">
+        <label for="option-one"> <span></span> Garçon </label> 
+    </div> 
+    <div id='female'>
+        <input id="option-two" name="radio" value="two" type="radio">
+        <label for="option-two"><span></span> Fille </label> 
+    </div>
+</div>
+                
+<div id="calculer">
+    <button id='b' onclick="f()">Calculer</button>
+            
+        </div>
+            <div id="results"></div>
+    </div>
+            </div>
+                
+        
+    </body>
+    <script>
+        function f(){      
+                document.getElementById("results").style.width = "200px";
+                document.getElementById("b").style.marginRight = "120px";
+            }
+    </script>
+</html>
