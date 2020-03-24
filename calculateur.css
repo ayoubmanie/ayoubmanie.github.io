@@ -1,0 +1,206 @@
+:root{
+    height: 100%;
+    background-repeat:no-repeat;
+    
+    background: rgb(231,47,119);
+    background: linear-gradient(49deg, rgba(231,47,119,1) 0%, rgba(130,60,120,1) 100%);
+    
+    font-family: Century Gothic, sans-serif;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-weight: bold;
+    color:darkslategrey;
+
+
+}
+
+#container{
+    display: grid ;
+    grid-template-columns: 1fr auto 1fr;
+    
+}
+
+#form{
+    grid-column: 2;
+    background-color: white;
+    width: auto;
+    height:     auto;
+    border-radius: 10px;
+    padding: 50px;
+    
+    display : grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+    box-shadow:  0 0 7px rgba(10,10,10,0.6);
+}
+
+#results{
+    grid-column: 2;
+    grid-row: 2/6;
+    width : 0px;
+    height: auto;
+    transition: width 1s ease;
+}
+
+#calculateur{
+    font-size: 23px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding-bottom: 25px;
+}
+#age{
+    grid-column: 1;   
+    grid-row: 2;
+}
+.age_taille{
+    display : grid;
+    grid-template-rows: auto auto;
+    font-size: 17px;
+    padding-bottom: 25px;
+}
+
+.age_taille span{
+    padding-bottom: 10px;
+}
+
+/*remove spinner from input number*/ 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input{
+    height: 30px;
+    border-radius: 3px;
+    border-style:none;
+    box-shadow: inset 0 0 3px rgba(10,10,10,0.1);
+    background: rgba(100,100,100,0.03);
+    Text-ALIGN:center;
+}
+
+.composants input{
+    width: 50px;
+}
+
+.composants span{
+    padding-left: 4px;
+}
+
+.composants{
+    display : grid;
+    grid-template-columns:150px auto;
+    font-size: 13px;
+    font-weight:normal;
+}
+
+#taille{
+    grid-column: 1;   
+    grid-row: 3;
+}
+
+#poids{
+    grid-column: 1;   
+    grid-row: 4;
+}
+
+input[type="radio"] { 
+    display: none; 
+}
+input[type="radio"] + label {
+    font-weight:400; 
+    font-size: 17px;
+}
+input[type="radio"] + label span { 
+    display: inline-block; 
+    width: 18px; 
+    height: 18px; 
+    margin: -2px 10px 0 0; 
+    vertical-align: middle; 
+    cursor: pointer; 
+    -moz-border-radius: 50%;
+    border-radius: 50%; 
+    border: 2px solid #ffffff; 
+} 
+input[type="radio"] + label span { 
+    background-color:#fff; 
+    box-shadow: 0px 0px 3px rgba(0,0,0,.2);
+}
+input[type="radio"]:checked + label { 
+    font-weight: bold; 
+}
+input[type="radio"]:checked + label span { 
+    background-color: #ff8800; 
+    border: 2px solid #ffffff;
+    box-shadow: 0px 0px 3px rgba(0,0,0,.2);
+}
+
+input[type="radio"] + label span, input[type="radio"]:checked + label span { 
+    -webkit-transition: background-color 0.24s linear;
+    -o-transition: background-color 0.24s linear; 
+    -moz-transition: background-color 0.24s linear;
+    transition: background-color 0.24s linear;    
+}
+
+#gender{
+    grid-column: 1;   
+    grid-row: 5;
+    display : grid;
+    grid-template-columns:1fr 1fr;
+
+}
+
+#male{
+    width:125px;
+}
+
+#calculer{
+    grid-column:1;
+    grid-row: 6;
+    justify-self: center;
+}
+
+#female{
+    padding-left: 21px;
+}
+button{
+    font-size: 19px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    height: 35px;
+    padding: 0 20px;
+    border-style: none;
+    padding-top: 2px;
+    color: white;
+    background-color: dodgerblue;
+    box-shadow: inset 0 0 3px rgba(10,10,10,0.3);
+    cursor:pointer;
+    transition: 0.5s;
+
+}
+
+button:hover{
+    background-color: #0bccd7;
+    box-shadow: 0 0 5px rgba(10,10,10,0.3);
+}
+button:focus{
+    outline:0;
+}
+button:active{
+    background-color: #5FD3EF;
+}
+
+#poids{
+    padding-bottom: 25px;
+}
+
+.left-items{
+    
+}
