@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=1280, initial-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="calculateur.css">
+        
+    </head>
+    
+    <body>
+        <div id="container">
+            <div id="form">
+<span id ="calculateur">Calculateur</span>
+
+<div id="age" class="age_taille">
+    <span>Age</span>
+    <div class="composants">
+        <div id="ans">
+            <input type="number">
+            <span>ans</span>
+        </div>
+        <div id="mois"  class="left-items">
+            <input type="number">
+            <span>mois</span>
+        </div>
+    </div>
+</div>
+                
+<div id="taille" class="age_taille">
+    <span>Taille</span>
+    <div class="composants">
+        <div id="m" >
+            <input type="number" id='metre'>
+            <span>m</span>
+        </div>
+        <div id="cm" class="left-items">
+            <input type="number">
+            <span>cm</span>
+        </div>
+    </div>
+</div>
+                
+<div id="poids" class="age_taille">
+    <span>Poids</span>
+    <div class="composants">
+        <div id="kg" >
+            <input type="number">
+            <span>kg</span>
+        </div>
+    </div>
+</div>
+
+<div id='gender'>
+    <div id='male'>
+        <input id="option-one" name="radio" value="one" checked="checked" type="radio">
+        <label for="option-one"> <span></span> Garçon </label> 
+    </div> 
+    <div id='female'>
+        <input id="option-two" name="radio" value="two" type="radio">
+        <label for="option-two"><span></span> Fille </label> 
+    </div>
+</div>
+                
+<div id="calculer">
+    <button id='b' onclick="f()">Calculer</button>
+                
+        </div>
+            <div id="results">
+                    <span id='resultat-taille' class='resultat-taille-poids'>
+                        <span class='bar'>
+                            <span id='bar-taille'></span>
+                        </span>
+                        <span class='label'>Taille</span>
+                    </span>
+                    <span id='resultat-poids' class='resultat-taille-poids'>
+                        <span class='bar' id='a'>
+                            <span id='bar-poids'></span>
+                        </span>
+                        <span class='label'>Poids</span>
+                    </span>
+
+            </div>
+                        <span id='signature'>&copy 2020 Ayoub <b>MANIE</b> </span>
+
+    </div>
+            </div>
+                
+    </body>
+    <script >
+        var a = 1;
+var b = [[1,2,3],[4,5,6]];
+function f() {
+    if (a == 1) {
+        document.getElementById("results").style.width = "200px";
+        document.getElementById("b").style.marginRight = "120px";
+        setTimeout(function() {
+            document.getElementById("results").style.opacity = "1";
+            document.getElementsByClassName("bar")[0].style.height = "233px";
+            document.getElementsByClassName("bar")[1].style.height = "233px";
+
+            setTimeout(function() {
+                var x = document.getElementById("metre").value;
+                document.getElementById("bar-taille").style.height = x + "px";
+                document.getElementById("bar-poids").style.height = "200px";
+            }, 300);
+        }, 600);
+
+        a++;
+    } else {
+        var x = document.getElementById("metre").value;
+        document.getElementById("bar-taille").style.height = x + "px";
+    }
+
+}
+    </script>
+</html>
