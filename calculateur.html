@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="width=1280, initial-scale=1">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <style>
+        
+:root{
+    height: 100%;
+    background-repeat:no-repeat;
+    
+    background: rgb(231,47,119);
+    background: linear-gradient(49deg, rgba(231,47,119,1) 0%, rgba(130,60,120,1) 100%);
+   
+    font-family: Century Gothic, sans-serif;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-weight: bold;
+    color:darkslategrey;
+    transform: scale(1);
+    user-select: none;
+    -webkit-user-select: none;
+    animation: ROTATE_background 10s infinite;
+
+
+}
+
+
+@keyframes ROTATE_background {
+  0% {
+
+        background: rgba(13,60,120,1);
+    
+  }
+  50% {
+    
+    background: rgb(231,47,119);
+    
+  }
+  100% {
+    
+        background: rgba(13,60,120,1);
+    
+  }
+   
+}
+
+#name{
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+#container{
+    display: grid ;
+    grid-template-columns: 1fr auto 1fr;
+    
+}
+
+#form{
+    grid-column: 2;
+    background-color: white;
+    width: auto;
+    height:     auto;
+    border-radius: 10px;
+    padding: 50px 50px 10px 50px;
+    
+    display : grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr auto;
+    
+    box-shadow:  0 0 7px rgba(10,10,10,0.6);
+}
+
+#signature{
+    grid-column: 1/3;
+    grid-row: 7;
+    justify-self:right;
+    font-weight: normal;
+    font-size:15px;
+    color : dimgray;
+
+}
+
+#results{
+    grid-column: 2;
+    grid-row: 2/6;
+    width : 0px;
+    height: 233px;
+    transition: width 0.7s ease, opacity 0.5s ease;
+    display : grid;
+    grid-template-columns: auto auto;
+    
+    
+    justify-items: center;
+    align-items: start;
+    font-weight: normal;
+    font-size: 20px;
+    opacity: 0;
+    padding-top: 30px; 
+}
+
+#resultat-taille{  
+    grid-column: 1;
+
+    display : grid;
+    grid-template-rows: 233px auto;
+    justify-self: right;
+    justify-items:center;
+}
+
+#resultat-poids{  
+    grid-column: 2;
+    display : grid;
+    grid-template-rows: 233px auto;
+    justify-self: right;
+    justify-items: center;
+    
+    
+}
+#a{
+        animation: none;
+
+}
+.bar{  
+    grid-row: 1;
+    height: 0px;
+    margin-bottom: 6px;
+    align-self: start;
+    justify-self:center;
+    justify-items:center;
+    
+    display:grid;
+    grid-template-rows: auto auto auto ; 
+    grid-template-columns: auto; 
+}
+
+.label{  
+    grid-row: 2;
+    box-shadow: 0 -5px 5px -5px #333;
+}
+.circle{
+    border-radius: 4px;
+    border: 0px solid #000; 
+    width: 8px;
+    height: 25px;
+    background-color: darkslategrey;
+    color:white;
+    
+    display : grid;
+    align-items: center;
+    justify-items:center;
+    z-index: 2;
+    transition: width 0.2s ease;
+    
+}
+.num_haut{
+    grid-row:1;
+    grid-column: 1;
+    align-self: start;
+    
+}
+
+.color_bar{
+    grid-row: 2;
+    grid-column: 1;
+    align-self:center;
+    z-index: 1;
+    
+    margin-top: -5px;
+    margin-bottom: -5px;
+    height: 184px;
+    width: 8px;
+    box-shadow: inset 0 0 4px rgba(10,10,10,0.2);
+    border-radius: 30px;
+
+}
+
+.cursor_taille_poids{
+    width: 0px;
+    height: 0px;
+    background-color: darkslategrey;
+    grid-row: 1/4;
+    grid-column: 1;
+    align-self:center;
+    border: 8px solid darkslategrey; 
+    border-bottom: 8px solid white;
+    border-left: 8px solid white;
+    border-top: 8px solid white;
+    padding-left: 9px;
+    top:25px;
+    opacity: 0;
+    transition: top 0.5s ease,opacity 0.5s ease;
+
+    align-self: start;
+    position: relative;
+}
+#cursor_taille{
+    transition: opacity 0.5s ease,top 0.5s ease;
+}
+.num_bas{
+    grid-row: 3;
+    grid-column: 1;
+
+    align-self:flex-end;
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(204,0,0, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 10px rgba(204,0,0, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(204,0,0, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(204,0,0, 0.4);
+    box-shadow: 0 0 0 0 rgba(204,0,0, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 7px rgba(204,0,0, 0);
+      box-shadow: 0 0 0 7px rgba(204,0,0, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204,0,0, 0);
+      box-shadow: 0 0 0 0 rgba(204,0,0, 0);
+  }
+}
+
+
+#bar-poids{
+    background-color: red;
+    height: 0px;
+    box-shadow: inset 0 0 4px rgba(10,10,10,0.2);
+    transition: height 0.5s ease;
+
+}
+
+
+
+
+#calculateur{
+    font-size: 23px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding-bottom: 25px;
+}
+#age{
+    grid-column: 1;   
+    grid-row: 2;
+}
+.age_taille{
+    display : grid;
+    grid-template-rows: auto auto;
+    font-size: 17px;
+    padding-bottom: 25px;
+}
+
+.age_taille span{
+    padding-bottom: 10px;
+}
+
+/*remove spinner from input number*/ 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input{
+    height: 30px;
+    border-radius: 3px;
+    border-style:none;
+    box-shadow: inset 0 0 3px rgba(10,10,10,0.1);
+    background: rgba(100,100,100,0.03);
+    Text-ALIGN:center;
+}
+
+.composants input{
+    width: 50px;
+}
+
+.composants span{
+    padding-left: 4px;
+}
+
+.composants{
+    display : grid;
+    grid-template-columns:150px auto;
+    font-size: 13px;
+    font-weight:normal;
+}
+
+#taille{
+    grid-column: 1;   
+    grid-row: 3;
+}
+
+#poids{
+    grid-column: 1;   
+    grid-row: 4;
+}
+
+input[type="radio"] { 
+    display: none; 
+}
+input[type="radio"] + label {
+    font-weight:400; 
+    font-size: 17px;
+}
+input[type="radio"] + label span { 
+    display: inline-block; 
+    width: 18px; 
+    height: 18px; 
+    margin: -2px 10px 0 0; 
+    vertical-align: middle; 
+    cursor: pointer; 
+    -moz-border-radius: 50%;
+    border-radius: 50%; 
+    border: 2px solid #ffffff; 
+} 
+input[type="radio"] + label span { 
+    background-color:#fff; 
+    box-shadow: 0px 0px 3px rgba(0,0,0,.2);
+}
+input[type="radio"]:checked + label { 
+    font-weight: bold; 
+}
+input[type="radio"]:checked + label span { 
+    border: 2px solid #ffffff;
+    box-shadow: 0px 0px 3px rgba(0,0,0,.2);
+}
+input[type="radio" id='option-one']:checked{
+    background-color: black; 
+
+}
+
+input[type="radio"] + label span, input[type="radio"]:checked + label span {
+    -webkit-transition: background-color 0.24s linear;
+    -o-transition: background-color 0.24s linear; 
+    -moz-transition: background-color 0.24s linear;
+    transition: background-color 0.24s linear;    
+}
+
+#gender{
+    grid-column: 1;   
+    grid-row: 5;
+    display : grid;
+    grid-template-columns:1fr 1fr;
+
+}
+
+#male{
+    width:125px;
+}
+
+#calculer{
+    grid-column:1;
+    grid-row: 6;
+    justify-self: center;
+}
+
+#female{
+    padding-left: 21px;
+}
+button{
+    font-size: 19px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    height: 35px;
+    padding: 0 20px;
+    border-style: none;
+    padding-top: 2px;
+    color: white;
+    background-color: dodgerblue;
+    box-shadow: inset 0 0 3px rgba(10,10,10,0.3);
+    cursor:pointer;
+    transition: 0.5s;
+
+}
+
+button:hover{
+    background-color: #0bccd7;
+    box-shadow: 0 0 5px rgba(10,10,10,0.3);
+}
+button:focus{
+    outline:0;
+}
+button:active{
+    background-color: #5FD3EF;
+}
+
+#poids{
+    padding-bottom: 25px;
+}
+
+        </style>
+    </head>
+    
+    <body>
+        <div id="container">
+            <div id="form">
+<span id ="calculateur">Calculateur</span>
+
+<div id="age" class="age_taille">
+    <span>Age</span>
+    <div class="composants">
+        <div id="ans">
+            <input type="number" id='age_ans' onchange="result('poids');result('taille');" placeholder="0">
+            <span>ans</span>
+        </div>
+        <div id="mois"  class="left-items">
+            <input type="number" id='age_mois' onchange="result('poids');result('taille');" placeholder="0">
+            <span>mois</span>
+        </div>
+    </div>
+</div>
+                
+<div id="taille" class="age_taille">
+    <span>Taille</span>
+    <div class="composants">
+        <div id="m" >
+            <input type="number" id='cm' onchange="result('taille')">
+            <span>cm</span>
+        </div>
+        <!--
+        <div id="cm" class="left-items">
+            <input type="number">
+            <span>cm</span>
+        </div>
+        -->
+    </div>
+</div>
+                
+<div id="poids" class="age_taille">
+    <span>Poids</span>
+    <div class="composants">
+        <div id="kg" >
+            <input type="number" id="KG" onchange="result('poids')">
+            <span>kg</span>
+        </div>
+    </div>
+</div>
+
+<div id='gender'>
+    <div id='male'>
+        <input id="option-one" name="radio" value="one" checked="checked" type="radio" onclick="result('poids');result('taille');">
+        <label for="option-one"> <span></span> Garçon </label> 
+    </div> 
+    <div id='female'>
+        <input id="option-two" name="radio" value="two" type="radio" onclick="result('poids');result('taille');">
+        <label for="option-two"><span></span> Fille </label> 
+    </div>
+</div>
+                
+<div id="calculer">
+    <button id='b' onclick="f()">Calculer</button>
+                
+        </div>
+            <div id="results">
+                    <span id='resultat-taille' class='resultat-taille-poids'>
+                        <span class='bar'>
+                            <span class='num_haut circle'>
+                                <span id='num_haut_taille'></span>
+                            </span>
+                            <span class='color_bar' id="color_bar_taille"></span>
+                            <span id='cursor_taille' class='cursor_taille_poids'></span>
+                            <span class='num_bas circle'>
+                                <span id='num_bas_taille'></span>
+                            </span>
+                        </span>
+                        <span class='label'>Taille</span>
+                    </span>
+                    <span id='resultat-poids' class='resultat-taille-poids'>
+                        <span class='bar' id='a'>
+                            <span class='num_haut circle'>
+                                <span id='num_haut_poids'></span>
+                            </span>
+                            <span class='color_bar' id="color_bar_poids"></span>
+                            <span id='cursor_poids' class='cursor_taille_poids'></span>
+                            <span class='num_bas circle'>
+                                <span id='num_bas_poids'></span>
+                            </span>
+                        </span>
+                        <span class='label'>Poids</span>
+                    </span>
+
+            </div>
+                        <span id='signature'>&copy 2020 <span id="name">Ayoub <b>MANIE</b></span> </span>
+
+    </div>
+            </div>
+                
+    </body>
+    <script >
+        
+        function gender_taille(G){
+     var taille_garcon_0_19 = [[0, 44, 46, 50, 54, 56], [2, 51.8, 54.6, 58.0, 61.7, 64.4], [4, 57.2, 59.4, 63.8, 67.6, 70.0],
+                          [6, 60.8, 63.1, 67.3, 71.4, 73.5], [8, 63.7, 65.9, 70.2, 74.4, 76.8],
+                          [10, 66.0, 68.2, 72.7, 77.3, 79.7], [12, 68.3, 70.3, 75.3, 80.0, 82.5],
+                          [14, 70.3, 72.5, 77.6, 82.4, 84.9], [16, 72.1, 74.5, 79.9, 84.9, 87.3],
+                          [18, 73.7, 76.4, 82.0, 87.2, 89.7], [20, 75.3, 78.2, 84.1, 89.6, 92.0],
+                          [22, 76.8, 79.7, 85.8, 91.7, 94.3], [24, 78.4, 81.2, 87.4, 93.5, 96.6],
+                          [26, 78.7, 82.0, 88.3, 94.6, 97.6], [28, 79.9, 83.4, 89.8, 96.4, 99.5],
+                          [30, 81.1, 84.7, 91.4, 98.2, 101.5], [32, 82.3, 85.9, 93.0, 99.8, 103.2],
+                          [34, 83.3, 87.1, 94.5, 101.4, 104.9], [36, 84.4, 88.3, 95.9, 103.0, 106.7],
+                          [38, 85.6, 89.3, 97.2, 104.4, 108.1], [40, 86.5, 90.5, 98.3, 105.7, 109.5],
+                          [42, 87.6, 91.5, 99.5, 107.0, 110.9], [44, 88.5, 92.4, 100.5, 108.3, 112.3],
+                          [46, 89.4, 93.5, 101.4, 109.6, 113.6], [48, 90.4, 94.4, 102.5, 110.9, 115.0],
+                          [50, 91.2, 95.6, 103.6, 112.3, 116.3], [52, 92.1, 96.2, 104.7, 113.5, 117.7],
+                          [54, 92.9, 97.2, 105.9, 114.8, 119.2], [56, 93.8, 98.2, 106.9, 116.1, 120.6],
+                          [58, 94.7, 99.2, 108.0, 117.2, 121.9], [60, 95.6, 100.2, 109.1, 118.3, 123.3],
+                          [62, 94.7, 99.9, 109.5, 119.0, 124.2], [64, 95.4, 100.6, 110.4, 120.0, 125.3],
+                          [66, 96.2, 101.4, 111.3, 121.1, 126.5], [68, 97.1, 102.3, 112.3, 122.3, 127.7],
+                          [70, 97.8, 103.1, 113.2, 123.4, 128.8], [72, 98.6, 104.0, 114.2, 124.4, 129.9],
+                          [74, 99.5, 104.8, 115.3, 125.6, 131.2], [76, 100.3, 105.6, 116.2, 126.7, 132.3],
+                          [78, 101.0, 106.5, 117.1, 127.7, 133.5], [80, 101.9, 107.3, 118.1, 128.8, 134.6],
+                          [82, 102.7, 108.2, 119.1, 129.9, 135.8], [84, 103.5, 109.1, 120.1, 131.0, 137.0],
+                          [86, 104.3, 110.1, 121.2, 132.2, 138.1], [88, 105.1, 111.0, 122.0, 133.3, 139.2],
+                          [90, 106.0, 111.8, 123.0, 134.3, 140.4], [92, 106.9, 112.8, 124.1, 135.5, 141.6],
+                          [94, 107.7, 113.7, 125.0, 136.6, 142.7], [96, 108.5, 114.6, 126.0, 137.7, 143.8],
+                          [98, 109.5, 115.6, 127.1, 139.0, 145.0], [100, 110.3, 116.5, 128.2, 140.0, 146.1],
+                          [102, 111.2, 117.4, 129.2, 141.3, 147.3], [104, 112.0, 118.3, 130.2, 142.4, 148.4],
+                          [106, 112.9, 119.2, 131.2, 143.6, 149.6], [108, 113.7, 120.2, 132.2, 144.7, 150.7],
+                          [110, 114.7, 121.1, 133.3, 146.0, 151.9], [112, 115.5, 122.0, 134.3, 147.2, 153.0],
+                          [114, 116.3, 122.9, 135.4, 148.3, 154.2], [116, 117.3, 123.9, 136.5, 149.5, 155.4],
+                          [118, 118.3, 124.9, 137.7, 150.7, 156.6], [120, 119.1, 125.6, 138.7, 151.8, 157.7],
+                          [122, 120.2, 126.7, 139.8, 153.1, 159.0], [124, 121.0, 127.5, 140.9, 154.1, 160.2],
+                          [126, 122.0, 128.5, 142.0, 155.3, 161.5], [128, 123.0, 129.5, 143.0, 156.5, 162.7],
+                          [130, 124.0, 130.3, 144.1, 157.6, 164.0], [132, 124.8, 131.5, 145.1, 158.6, 165.3],
+                          [134, 125.9, 132.7, 146.3, 159.8, 166.5], [136, 126.7, 133.6, 147.2, 160.7, 167.6],
+                          [138, 127.6, 134.6, 148.3, 161.8, 168.8], [140, 128.6, 135.5, 149.4, 162.8, 169.9],
+                          [142, 129.5, 136.5, 150.4, 163.8, 171.0], [144, 130.4, 137.3, 151.5, 164.8, 172.0],
+                          [146, 131.3, 138.2, 152.4, 165.9, 173.0], [148, 132.1, 139.0, 153.3, 166.9, 174.0],
+                          [150, 132.9, 139.8, 154.1, 167.7, 174.9], [152, 133.7, 140.7, 155.0, 168.7, 175.7],
+                          [154, 134.5, 141.5, 155.7, 169.5, 176.5], [156, 135.2, 142.3, 156.5, 170.3, 177.3],
+                          [158, 135.9, 143.1, 157.1, 171.1, 178.1], [160, 136.5, 143.7, 157.7, 171.7, 178.8],
+                          [162, 137.2, 144.4, 158.3, 172.3, 179.4], [164, 137.7, 145.0, 158.9, 172.9, 180.0],
+                          [166, 138.3, 145.5, 159.5, 173.4, 180.5], [168, 138.7, 146.0, 159.9, 173.9, 181.0],
+                          [170, 139.1, 146.5, 160.4, 174.2, 181.4], [172, 139.5, 146.9, 160.8, 174.5, 181.5],
+                          [174, 139.8, 147.3, 161.1, 174.8, 181.7], [176, 140.0, 147.5, 161.5, 175.1, 182.0],
+                          [178, 140.3, 147.8, 161.6, 175.3, 182.0], [180, 140.6, 148.0, 162.0, 175.6, 182.2],
+                          [182, 140.8, 148.3, 162.0, 175.7, 182.4], [184, 141.1, 148.5, 162.2, 175.9, 182.5],
+                          [186, 141.3, 148.6, 162.4, 176.1, 182.7], [188, 141.6, 148.8, 162.4, 176.2, 182.7],
+                          [190, 141.8, 149.0, 162.5, 176.3, 182.8], [192, 142.0, 149.0, 162.7, 176.4, 182.9],
+                          [194, 142.2, 149.2, 162.7, 176.5, 183.0], [196, 142.4, 149.2, 162.8, 176.6, 183.0],
+                          [198, 142.6, 149.3, 162.9, 176.7, 183.1], [200, 142.7, 149.4, 163.0, 176.8, 183.1],
+                          [202, 142.9, 149.5, 163.0, 176.8, 183.2], [204, 143.0, 149.5, 163.0, 176.8, 183.2],
+                          [206, 143.1, 149.5, 163.0, 176.9, 183.3], [208, 143.2, 149.6, 163.1, 176.9, 183.2],
+                          [210, 143.4, 149.6, 163.1, 176.9, 183.2], [212, 143.3, 149.7, 163.1, 176.8, 183.2],
+                          [214, 143.3, 149.7, 163.1, 176.8, 183.4], [216, 143.4, 149.7, 163.1, 176.8, 183.2],
+                          [218, 143.4, 149.7, 163.1, 176.7, 183.1], [220, 143.4, 149.7, 163.1, 176.7, 183.1],
+                          [222, 143.3, 149.7, 163.1, 176.6, 183.0], [224, 143.3, 149.7, 163.0, 176.5, 183.0],
+                          [226, 143.2, 149.7, 163.0, 176.4, 183.0], [228, 143.1, 149.6, 163.0, 176.4, 182.8]];
+
+    var taille_fille_0_19 = [[0, 43, 45, 48.5, 52, 54.5], [2, 49.8, 52.3, 56.3, 60.3, 62.2],
+                        [4, 54.4, 57.1, 61.2, 65.3, 67.5], [6, 58.0, 60.8, 65.0, 69.3, 71.9],
+                        [8, 61.0, 64.0, 68.3, 72.8, 75.5], [10, 63.6, 66.8, 71.2, 75.9, 78.7],
+                        [12, 66.0, 69.2, 73.8, 78.7, 81.7], [14, 68.2, 71.4, 76.3, 81.5, 84.4],
+                        [16, 70.1, 73.5, 78.6, 83.9, 87.0], [18, 72.0, 75.4, 80.9, 86.4, 89.5],
+                        [20, 73.7, 77.1, 82.9, 88.6, 91.8], [22, 75.3, 78.8, 84.7, 90.7, 93.9],
+                        [24, 76.8, 80.3, 85.5, 92.9, 96.0], [26, 77.7, 80.6, 87.2, 94.3, 97.4],
+                        [28, 79.1, 82.0, 89.1, 96.1, 99.3], [30, 80.3, 83.3, 90.7, 97.8, 101.3],
+                        [32, 81.4, 84.7, 92.2, 99.5, 123.3], [34, 82.5, 86.0, 93.6, 101.2, 123.3],
+                        [36, 83.6, 87.2, 95.1, 102.7, 106.7], [38, 84.7, 88.4, 96.4, 104.2, 108.2],
+                        [40, 85.7, 89.7, 97.8, 105.7, 123.3], [42, 86.7, 90.9, 99.0, 107.2, 111.5],
+                        [44, 87.8, 92.1, 100.3, 108.5, 123.3], [46, 88.7, 93.2, 101.6, 110.0, 123.3],
+                        [48, 89.8, 94.3, 102.7, 111.4, 123.3], [50, 90.7, 95.2, 103.9, 112.7, 117.3],
+                        [52, 91.7, 96.4, 105.0, 114.2, 118.7], [54, 92.6, 97.3, 106.2, 115.4, 120.0],
+                        [56, 93.6, 98.3, 107.4, 116.8, 121.4], [58, 94.5, 99.3, 108.5, 118.0, 122.6],
+                        [60, 95.4, 100.2, 109.6, 119.3, 123.3], [62, 94.8, 99.5, 109.2, 118.5, 123.9],
+                        [64, 95.5, 100.4, 109.9, 119.7, 125.0], [66, 96.3, 101.2, 110.9, 120.7, 126.1],
+                        [68, 97.1, 102.1, 112.0, 121.9, 127.3], [70, 97.9, 103.0, 112.9, 123.0, 128.5],
+                        [72, 98.7, 103.7, 113.8, 124.1, 129.6], [74, 99.6, 104.8, 114.9, 125.2, 130.8],
+                        [76, 100.3, 105.5, 115.8, 126.3, 131.8], [78, 101.1, 106.4, 116.8, 127.4, 133.0],
+                        [80, 101.9, 107.3, 117.8, 128.5, 134.2], [82, 102.6, 108.2, 118.7, 129.7, 135.3],
+                        [84, 103.5, 109.0, 119.7, 130.8, 136.4], [86, 104.3, 109.9, 120.8, 132.1, 137.6],
+                        [88, 105.1, 110.9, 121.7, 133.0, 138.8], [90, 105.8, 111.7, 122.7, 134.3, 139.8],
+                        [92, 106.7, 112.5, 123.8, 135.4, 141.0], [94, 107.5, 113.4, 124.9, 136.4, 142.2],
+                        [96, 108.4, 114.3, 125.8, 137.5, 143.3], [98, 109.4, 115.2, 127.1, 138.7, 144.5],
+                        [100, 110.2, 116.1, 127.9, 139.7, 145.6], [102, 111.0, 117.0, 129.0, 140.8, 146.7],
+                        [104, 111.9, 117.9, 130.1, 142.0, 147.9], [106, 112.7, 118.9, 131.1, 143.1, 149.0],
+                        [108, 113.6, 119.7, 132.2, 144.2, 150.1], [110, 114.5, 120.6, 133.2, 145.5, 151.3],
+                        [112, 115.3, 121.5, 134.2, 146.6, 152.3], [114, 116.2, 122.4, 135.2, 147.7, 153.5],
+                        [116, 117.1, 123.4, 136.2, 148.9, 154.8], [118, 117.9, 124.4, 137.2, 150.1, 155.8],
+                        [120, 118.8, 125.2, 138.2, 151.2, 157.1], [122, 119.9, 126.3, 139.3, 152.4, 158.4],
+                        [124, 120.9, 127.1, 140.3, 153.5, 159.6], [126, 121.8, 128.1, 141.4, 154.8, 160.8],
+                        [128, 122.8, 129.0, 142.4, 155.7, 162.1], [130, 123.7, 130.1, 143.4, 156.8, 163.3],
+                        [132, 124.6, 131.0, 144.4, 157.8, 164.4], [134, 125.7, 132.2, 145.6, 159.0, 165.8],
+                        [136, 126.6, 133.2, 146.6, 160.0, 167.0], [138, 127.4, 134.3, 147.6, 161.0, 167.9],
+                        [140, 128.3, 135.4, 148.8, 162.0, 169.1], [142, 129.2, 136.3, 149.8, 163.0, 170.2],
+                        [144, 130.1, 137.2, 150.8, 164.0, 171.1], [146, 130.9, 138.2, 151.7, 165.1, 172.1],
+                        [148, 131.7, 139.0, 152.5, 165.9, 173.1], [150, 132.4, 139.7, 153.4, 166.9, 173.9],
+                        [152, 133.2, 140.5, 154.2, 167.7, 174.9], [154, 133.9, 141.2, 154.9, 168.6, 175.6],
+                        [156, 134.6, 141.9, 155.6, 169.4, 176.3], [158, 135.5, 142.5, 156.3, 170.2, 177.2],
+                        [160, 136.1, 143.1, 156.9, 170.7, 177.8], [162, 136.7, 143.6, 157.5, 171.3, 178.5],
+                        [164, 137.4, 144.2, 158.1, 171.9, 179.1], [166, 137.8, 144.7, 158.6, 172.3, 179.6],
+                        [168, 138.3, 145.1, 159.1, 172.7, 179.9], [170, 138.8, 145.6, 159.6, 173.2, 180.3],
+                        [172, 139.1, 145.9, 159.9, 173.6, 180.6], [174, 139.4, 146.3, 160.4, 173.8, 180.8],
+                        [176, 139.7, 146.6, 160.6, 174.2, 181.0], [178, 140.0, 146.8, 160.9, 174.3, 181.1],
+                        [180, 140.3, 147.2, 161.1, 174.5, 181.3], [182, 140.6, 147.3, 161.4, 174.7, 181.5],
+                        [184, 140.9, 147.5, 161.6, 174.9, 181.7], [186, 141.0, 147.6, 161.8, 175.0, 181.8],
+                        [188, 141.3, 147.8, 161.9, 175.1, 181.9], [190, 141.5, 147.9, 162.1, 175.3, 182.1],
+                        [192, 141.7, 148.1, 162.2, 175.4, 182.2], [194, 141.8, 148.2, 162.3, 175.5, 182.3],
+                        [196, 142.0, 148.4, 162.4, 175.5, 182.4], [198, 142.1, 148.6, 162.5, 175.6, 182.5],
+                        [200, 142.3, 148.6, 162.6, 175.6, 182.5], [202, 142.3, 148.7, 162.6, 175.7, 182.5],
+                        [204, 142.4, 148.8, 162.7, 175.8, 182.6], [206, 142.5, 148.9, 162.8, 175.8, 182.5],
+                        [208, 142.6, 148.9, 162.8, 175.8, 182.5], [210, 142.6, 148.9, 162.8, 175.8, 182.5],
+                        [212, 142.6, 149.0, 162.8, 175.8, 182.5], [214, 142.6, 149.0, 162.8, 175.8, 182.4],
+                        [216, 142.6, 149.1, 162.8, 175.8, 182.4], [218, 142.6, 149.1, 162.6, 175.7, 182.4],
+                        [220, 142.6, 149.1, 162.6, 175.7, 182.3], [222, 142.6, 149.1, 162.5, 175.7, 182.2],
+                        [224, 142.6, 149.1, 162.4, 175.6, 182.2], [226, 142.6, 149.1, 162.4, 175.6, 182.1],
+                        [228, 142.6, 149.1, 162.4, 175.5, 181.9]];
+
+    if (G == 1){return taille_garcon_0_19;}
+        
+    else if (G == 2){return taille_fille_0_19;}
+        }
+function gender_poids(P){
+    var poids_garcon_0_10 = [[0, 2, 2.5, 3.3, 4.3, 5], [2, 3.6, 4.2, 5.4, 7.0, 7.8], [4, 4.9, 5.5, 6.9, 8.6, 9.7],
+                        [6, 5.7, 6.3, 7.9, 9.8, 10.9], [8, 6.2, 6.8, 8.6, 10.6, 11.8], [10, 6.6, 7.3, 9.2, 11.3, 12.7],
+                        [12, 6.9, 7.7, 9.6, 11.9, 13.3], [14, 7.2, 8.1, 10.1, 12.5, 13.9],
+                        [16, 7.5, 8.5, 10.5, 13.1, 14.6], [18, 7.8, 8.8, 10.9, 13.6, 15.2],
+                        [20, 8.1, 9.1, 11.3, 14.2, 15.8], [22, 8.4, 9.4, 11.7, 14.7, 16.4],
+                        [24, 8.6, 9.6, 12.1, 15.3, 17.0], [26, 8.9, 9.9, 12.5, 15.8, 17.6],
+                        [28, 9.1, 10.3, 12.9, 16.3, 18.2], [30, 9.4, 10.6, 13.2, 16.8, 18.9],
+                        [32, 9.6, 10.8, 13.6, 17.2, 19.5], [34, 9.8, 11.0, 14.0, 17.7, 20.1],
+                        [36, 10.0, 11.3, 14.3, 18.2, 20.7], [38, 10.2, 11.5, 14.7, 18.7, 21.3],
+                        [40, 10.5, 11.8, 15.0, 19.2, 21.9], [42, 10.7, 12.0, 15.4, 22.5, 123.3],
+                        [44, 10.9, 12.2, 15.7, 20.2, 23.1], [46, 11.1, 12.4, 16.0, 20.7, 23.7],
+                        [48, 11.3, 12.7, 16.4, 21.2, 24.2], [50, 11.5, 12.9, 16.7, 21.7, 24.8],
+                        [52, 11.7, 13.2, 17.0, 22.2, 25.4], [54, 11.8, 13.4, 17.3, 22.7, 26.0],
+                        [56, 12.0, 13.7, 17.7, 23.2, 26.6], [58, 12.2, 13.9, 18.0, 23.7, 27.2],
+                        [60, 12.5, 14.1, 18.3, 24.2, 27.8], [62, 12.6, 14.2, 18.3, 24.0, 27.7],
+                        [64, 12.8, 14.5, 18.7, 24.6, 28.4], [66, 13.0, 14.8, 19.0, 25.1, 29.1],
+                        [68, 13.2, 15.0, 19.4, 25.6, 29.8], [70, 13.5, 15.4, 19.8, 26.2, 30.5],
+                        [72, 13.7, 15.6, 20.2, 26.8, 31.2], [74, 13.9, 15.9, 20.6, 27.3, 32.0],
+                        [76, 14.2, 16.2, 21.0, 27.9, 32.7], [78, 14.5, 16.5, 21.3, 28.5, 33.4],
+                        [80, 14.8, 16.8, 21.7, 29.1, 34.2], [82, 15.1, 17.2, 22.2, 29.7, 34.9],
+                        [84, 15.4, 17.4, 22.6, 30.4, 35.6], [86, 15.7, 17.7, 22.9, 31.0, 36.4],
+                        [88, 15.9, 18.0, 23.4, 31.6, 37.3], [90, 16.2, 18.2, 23.7, 32.2, 38.2],
+                        [92, 16.4, 18.5, 24.2, 32.9, 39.1], [94, 16.7, 18.9, 24.6, 33.5, 40.0],
+                        [96, 17.0, 19.1, 25.1, 34.2, 41.0], [98, 17.2, 19.4, 25.4, 35.0, 42.0],
+                        [100, 17.5, 19.7, 25.9, 35.7, 43.1], [102, 17.7, 20.0, 26.3, 36.5, 44.2],
+                        [104, 17.9, 20.4, 26.8, 37.4, 45.3], [106, 18.2, 20.7, 27.3, 38.3, 46.4],
+                        [108, 18.5, 21.0, 27.8, 39.1, 47.6], [110, 18.7, 21.3, 28.2, 40.0, 48.9],
+                        [112, 19.0, 21.6, 28.7, 40.8, 50.2], [114, 19.3, 21.9, 29.2, 41.7, 51.5],
+                        [116, 19.5, 22.2, 29.8, 42.6, 52.9], [118, 19.8, 22.6, 30.3, 43.5, 54.4],
+                        [120, 20.1, 22.9, 30.8, 44.4, 55.9]];
+
+    var poids_fille_0_10 = [[0, 1.8, 2.4, 3.2, 4, 4.6], [2, 3.5, 4.0, 5.1, 6.5, 7.4], [4, 4.5, 5.1, 6.5, 8.2, 9.4],
+                       [6, 5.1, 5.7, 7.4, 9.3, 10.7], [8, 5.6, 6.2, 8.1, 10.2, 11.6], [10, 6.0, 6.6, 8.6, 10.9, 12.5],
+                       [12, 6.3, 7.1, 9.0, 11.5, 13.2], [14, 6.6, 7.4, 9.4, 12.1, 13.8],
+                       [16, 6.9, 7.8, 9.8, 12.7, 14.5], [18, 7.2, 8.1, 10.2, 13.3, 15.1],
+                       [20, 7.5, 8.4, 10.6, 15.8, 123.3], [22, 7.8, 8.7, 11.1, 16.4, 123.3],
+                       [24, 8.1, 9.0, 11.5, 14.9, 17.1], [26, 8.4, 9.3, 11.9, 15.4, 17.7],
+                       [28, 8.6, 9.6, 12.4, 16.0, 18.4], [30, 8.9, 9.9, 12.7, 16.5, 123.3],
+                       [32, 9.2, 10.2, 13.1, 17.1, 19.7], [34, 9.4, 10.5, 13.5, 17.6, 20.3],
+                       [36, 9.6, 10.8, 13.9, 18.2, 21.0], [38, 9.8, 11.1, 14.3, 18.8, 21.6],
+                       [40, 10.0, 11.4, 14.7, 19.4, 22.3], [42, 10.3, 11.6, 15.1, 19.9, 23.0],
+                       [44, 10.5, 11.8, 15.4, 20.4, 23.8], [46, 10.7, 12.1, 15.8, 21.0, 24.5],
+                       [48, 10.9, 12.3, 16.1, 21.5, 25.3], [50, 11.2, 12.6, 16.5, 22.1, 26.0],
+                       [52, 11.4, 12.8, 16.8, 22.7, 26.7], [54, 11.5, 13.0, 17.2, 23.3, 27.4],
+                       [56, 11.7, 13.2, 17.6, 23.8, 28.1], [58, 11.9, 13.5, 18.0, 24.4, 28.8],
+                       [60, 12.1, 13.8, 18.3, 25.0, 29.6], [62, 12.1, 13.7, 18.1, 24.8, 29.5],
+                       [64, 12.3, 13.9, 18.4, 118.3, 123.3], [66, 12.4, 14.1, 18.7, 25.8, 30.9],
+                       [68, 12.6, 14.3, 19.0, 26.3, 31.6], [70, 12.9, 14.6, 19.3, 26.8, 32.3],
+                       [72, 13.1, 14.8, 19.6, 27.4, 33.0], [74, 13.2, 15.1, 19.9, 28.0, 33.8],
+                       [76, 13.4, 15.3, 20.3, 28.6, 34.6], [78, 13.7, 15.6, 20.6, 29.2, 35.5],
+                       [80, 14.0, 15.9, 21.0, 29.9, 36.3], [82, 14.2, 16.2, 21.4, 30.5, 37.2],
+                       [84, 14.5, 16.5, 21.8, 38.1, 123.3], [86, 14.8, 16.7, 22.3, 31.9, 39.1],
+                       [88, 15.1, 17.0, 22.8, 32.6, 40.0], [90, 15.3, 17.4, 23.2, 33.4, 41.0],
+                       [92, 15.6, 17.7, 23.7, 34.1, 42.0], [94, 15.9, 18.0, 24.2, 34.9, 43.1],
+                       [96, 16.2, 18.4, 24.7, 35.7, 44.2], [98, 16.5, 18.8, 25.2, 36.5, 45.2],
+                       [100, 16.8, 19.1, 25.7, 37.3, 46.3], [102, 17.1, 19.5, 26.2, 38.1, 47.5],
+                       [104, 17.4, 26.7, 39.0, 48.7, 123.3], [106, 17.7, 20.2, 27.3, 39.9, 50.0],
+                       [108, 18.1, 20.6, 27.8, 40.8, 51.1], [110, 18.4, 21.0, 28.4, 41.8, 52.5],
+                       [112, 18.8, 21.5, 29.1, 42.7, 53.7], [114, 19.1, 21.9, 29.7, 43.8, 55.1],
+                       [116, 19.5, 22.3, 30.4, 44.8, 123.3], [118, 19.8, 22.8, 31.1, 45.9, 57.9],
+                       [120, 20.2, 23.3, 31.8, 47.0, 59.3]];
+    if (P == 1){return poids_garcon_0_10;}
+        
+    else if (P == 2){return poids_fille_0_10;}
+}
+
+        
+        
+
+        
+        function result(type){
+            var VAR =0;
+            if (document.getElementsByName('radio')[0].checked){
+                VAR = 1;
+            }else if(document.getElementsByName('radio')[1].checked){
+                VAR = 2;
+            }
+            
+            var t = [];
+            
+            var age_an   =  Number(document.getElementById('age_ans').value);
+            var age_mois =  Number(document.getElementById('age_mois').value);
+            var age = age_mois + age_an*12;
+            
+            var taille = 0;
+
+            var a = 0;
+            var ligne = [];
+            var p1;
+            var color1;
+            var num_haut_taille;
+            var num_bas_taille;
+            var h1;
+            var text="";
+            
+            var id1 = "color_bar_";
+            var id2 = "num_haut_";
+            var id3 = 0;
+            var id4 = "cursor_";
+            var id5 = "num_bas_";
+            
+            id1 += type;
+            id2 += type;
+            if(type=='poids'){
+                id3 = 1;
+                t = gender_poids(VAR);
+                taille = Number(document.getElementById('KG').value);
+            }else if(type=="taille"){
+                id3 = 0;
+                t = gender_taille(VAR);
+                taille = Number(document.getElementById('cm').value);
+            }
+            id4 += type;
+            id5 += type;
+            console.log(id5);
+            
+            if(age%2 !=0){
+                var t2 = [];
+                a = age/2 - 0.5;
+                t[0]=age;
+                for(var i=0;i<6;i++){
+                    var q = (t[a+1][i] + t[a][i])/2;
+                    t2[i] = Number(q.toFixed(1));
+                }
+                ligne = t2;
+            } else{
+                a = Math.floor(age/2);
+                ligne = t[a];
+            }
+            console.log(ligne);
+            if (age == ligne[0]){
+                if (taille <= ligne[1]){
+                    //red
+                    color1 ='rgb(255,0,0) linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(252,0,0,1) 100%)';
+                    num_haut_taille = "-3";
+                    num_bas_taille = "";
+                }
+                else if ((ligne[1] < taille) && (taille<ligne[2])){
+                    p1 = ((ligne[2] - taille) * 100) / (ligne[2] - ligne[1]);
+                    //orange
+                    color1 ='rgb(252,0,0) linear-gradient(0deg, rgba(252,0,0,1) 0%, rgba(255,231,4,1) 64%, rgba(124,252,0,1) 100%)';
+                    num_haut_taille = "-2";
+                    num_bas_taille = "-3";
+                }
+                else if((ligne[2] <= taille) && (taille  <= ligne[4])){
+                    //green
+                    p1 = ((ligne[4] - taille) * 100) / (ligne[4] - ligne[2]);
+                    color1='rgb(124,252,0) linear-gradient(0deg, rgba(124,252,0,1) 0%, rgba(124,252,0,1) 100%)';
+                    num_haut_taille = "+2";
+                    num_bas_taille = "-2";
+                }
+                else if((ligne[4] < taille) && (taille<ligne[5])){
+                    //orange
+                    p1 = 100 - ((taille - ligne[4]) * 100) / (ligne[5] - ligne[4]);
+                    color1 ='rgb(252,0,0) linear-gradient(180deg, rgba(252,0,0,1) 0%, rgba(255,231,4,1) 64%, rgba(124,252,0,1) 100%)';
+                    num_haut_taille = "+3";
+                    num_bas_taille = "+2";
+                }
+                else if (ligne[5] <= taille){
+                    //red
+                    color1 ='rgb(255,0,0) linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(252,0,0,1) 100%)';
+                    num_haut_taille = "";
+                    num_bas_taille = "+3";
+                }
+                
+                h1 = ((p1*160)/100) ;
+
+                document.getElementById(id1).style.background = color1;
+                
+                document.getElementById(id2).innerHTML =  num_haut_taille ;
+                if (num_haut_taille==""){
+                    document.getElementsByClassName("num_haut")[id3].style.width =  "8px" ;
+                }else{
+                    document.getElementsByClassName("num_haut")[id3].style.width =  "27px" ;
+                }
+                
+                document.getElementById(id5).innerHTML =  num_bas_taille ;
+                if (num_bas_taille==""){
+                    document.getElementsByClassName("num_bas")[id3].style.width =  "8px" ;
+                }else{
+                    document.getElementsByClassName("num_bas")[id3].style.width =  "27px" ;
+                }
+                
+                if(color1=='rgb(255,0,0) linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(252,0,0,1) 100%)'){
+                    document.getElementById(id1).style.animation = 'pulse 1s infinite';
+                    document.getElementById(id1).style.boxShadow = 'inset 0 0 4px rgba(10,10,10,0.2)';
+                    
+                    
+                }else{
+                    document.getElementById(id1).style.animation = 'none';
+                }
+                
+                if(color1 == 'rgb(255,0,0) linear-gradient(0deg, rgba(255,0,0,1) 0%, rgba(252,0,0,1) 100%)' ){
+                    
+                    document.getElementById(id4).style.opacity = '0';
+                }
+                else{
+                    document.getElementById(id4).style.opacity = '1';
+                }
+                
+                h1 += 25; 
+                document.getElementById(id4).style.top = h1 + "px";
+                
+                
+            }
+            
+        }
+
+        
+        var a = 1;
+function f() {
+    
+
+    if (a == 1) {
+        document.getElementById("results").style.width = "200px";
+        document.getElementById("b").style.marginRight = "120px";
+        setTimeout(function() {
+            document.getElementById("results").style.opacity = "1";
+
+            setTimeout(function() {
+                var x = document.getElementById("cm").value;
+            }, 300);
+        }, 600);
+
+        a++;
+    } else {
+
+        result("poids");
+        result("taille");
+
+    }
+
+}
+    </script>
+</html>
